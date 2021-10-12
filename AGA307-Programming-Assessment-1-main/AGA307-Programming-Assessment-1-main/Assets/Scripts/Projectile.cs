@@ -27,20 +27,21 @@ public class Projectile : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
 	{
         Destroy(this.gameObject);
-        if(collision.gameObject.tag == "Target")
-		{
-            Destroy(collision.gameObject, 1);
-        }
-        
-	}
+        /*   if(collision.gameObject.tag == "Target")
+           {
+               Destroy(collision.gameObject, 1);
+           }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Destroy(this.gameObject);
-        if (other.gameObject.tag == "Target")
-        {
-            Destroy(other.gameObject);
-        }
+       }
 
+       private void OnTriggerEnter(Collider other)
+       {
+           Destroy(this.gameObject);
+           if (other.gameObject.tag == "Target")
+           {
+               Destroy(other.gameObject);
+           }
+
+       */
     }
 }
