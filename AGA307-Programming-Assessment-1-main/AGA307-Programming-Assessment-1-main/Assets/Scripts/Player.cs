@@ -48,8 +48,8 @@ public class Player : MonoBehaviour
 
     void Move()
 	{
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        float x = Input.GetAxisRaw("Horizontal");
+        float z = Input.GetAxisRaw("Vertical");
 
         float yVel = velocity.y;
         velocity = (transform.right * x + transform.forward * z).normalized;

@@ -16,7 +16,7 @@ public class FiringPoint : MonoBehaviour
         
         if (Physics.Raycast(transform.position, fwd, out hit, 10))
         {
-            print(hit.collider.name);
+            
 
             if (hit.collider.gameObject.name == ("Sphere2"))
             {
