@@ -8,8 +8,10 @@ public class Gun : MonoBehaviour
     [Header("Components and References")]
     public Projectile prefab;
     public Transform spawnPosition;
+    
 
     public LayerMask hitMask;
+    public int GunUsed = 1;
 
     public void Shoot()
 	{
@@ -32,6 +34,8 @@ public class Gun : MonoBehaviour
         else
             //spawn the bullet at tip of gun
             Instantiate(prefab, spawnPosition.position, spawnPosition.rotation);
+            
+		
 	}
 
 

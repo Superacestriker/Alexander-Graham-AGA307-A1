@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
     [Header("Settings")]
     public float speed = 10;
     public float lifeTime = 2f;
+    
 
     [Header("Components")]
     public Rigidbody RB;
@@ -26,7 +27,8 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
 	{
-        Destroy(this.gameObject);
+        
+           Destroy(this.gameObject);
         /*   if(collision.gameObject.tag == "Target")
            {
                Destroy(collision.gameObject, 1);

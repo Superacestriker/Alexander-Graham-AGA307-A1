@@ -23,7 +23,8 @@ public class Player : MonoBehaviour
 
     [Header("Components")]
     public CharacterController controller;
-    public Gun gun;
+    public Gun[] guns;
+    public int currentGun = 0;
 
     void Start()
     {
@@ -33,6 +34,8 @@ public class Player : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        SwitchWeapon(0);
     }
 
     
@@ -41,9 +44,36 @@ public class Player : MonoBehaviour
         isGrounded = Physics.CheckSphere(this.transform.TransformPoint(groundCheckPos), groundDistance, groundMask);
         Move();
         Look();
+
+		
+        for(int i = 0; i < 9; i++)
+		{
+            // turn i into a string
+            string key = (i + 1).ToString();
+            if(Input.GetKeyDown(key))
+                SwitchWeapon(i);
+                
+		}
         
-        if(Input.GetMouseButtonDown(0))
-            gun.Shoot();
+        
+
+        
+
+        if (Input.GetMouseButtonDown(0))
+            guns[currentGun].Shoot();
+    }
+
+    void SwitchWeapon(int targetWeapon)
+	{
+		for (int i = 0; i < guns.Length; i++)
+		{
+                guns[i].gameObject.SetActive(false);
+
+        }
+
+        guns[targetWeapon].gameObject.SetActive(true);
+        currentGun = targetWeapon;
+
     }
 
     void Move()
