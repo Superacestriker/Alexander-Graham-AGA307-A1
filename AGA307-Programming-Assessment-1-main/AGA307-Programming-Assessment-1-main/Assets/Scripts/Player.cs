@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour
     public CharacterController controller;
     public Gun[] guns;
     public int currentGun = 0;
+    public Text weaponName;
 
     void Start()
     {
@@ -54,10 +56,28 @@ public class Player : MonoBehaviour
                 SwitchWeapon(i);
                 
 		}
-        
-        
 
-        
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            print("Golden Gun");
+            weaponName.text = ("Golden Gun");
+        }
+            
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            print("Plasma Gun");
+            weaponName.text = ("Plasma Gun");
+        }
+            
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            print("BFG reference");
+            weaponName.text = ("BFG reference");
+        }
+            
+
 
         if (Input.GetMouseButtonDown(0))
             guns[currentGun].Shoot();
