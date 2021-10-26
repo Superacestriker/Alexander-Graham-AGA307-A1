@@ -2,17 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TargetSize
+{
+    Small,
+    Medium,
+    Large
+}
+
 public class TargetManager : MonoBehaviour
 {
     public GameObject[] targetPrefabs;
     public Transform[] spawnPoints;
-    
-    
+    public TargetSize targetSize;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        SetUp();
     }
+
+    void SetUp()
+    {
+        //idk
+    }
+
+
 
     // Update is called once per frame
     void Update()
