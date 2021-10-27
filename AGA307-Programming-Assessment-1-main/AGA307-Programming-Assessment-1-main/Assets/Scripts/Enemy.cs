@@ -43,7 +43,8 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		
+        if (Input.GetKeyDown(KeyCode.H))
+            GameManager.instance.AddScore(5);
     }
 
     IEnumerator Move()

@@ -9,7 +9,7 @@ public enum TargetSize
     Large
 }
 
-public class TargetManager : MonoBehaviour
+public class TargetManager : Singleton<TargetManager>
 {
     public GameObject[] targetPrefabs;
     public Transform[] spawnPoints;

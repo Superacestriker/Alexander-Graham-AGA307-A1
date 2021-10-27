@@ -17,9 +17,20 @@ public enum Difficulty
     Hard
 }
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     public GameState state;
+    public Difficulty difficulty;
+    
+
+    public int score = 0;
+
+
+
+    protected override void Awake()
+	{
+       base.Awake();
+	}
 
     // Start is called before the first frame update
     void Start()
@@ -32,4 +43,9 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+    public void AddScore(int points)
+	{
+        score = score + points;
+	}
 }
