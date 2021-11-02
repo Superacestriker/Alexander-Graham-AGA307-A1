@@ -7,7 +7,10 @@ public class Target : MonoBehaviour
     public TargetSize targetSize;
     public int health = 3;
     public float size;
+    public GameObject gManager;
     
+
+
     public float[] sizes = new float[]
 	{
         0.5f,
@@ -24,15 +27,16 @@ public class Target : MonoBehaviour
         3
     };
 public int strafeDistance = 3;
+    public GameObject coloredObject;
     Vector3 centre;
 
     // Start is called before the first frame update
     void Start()
     {
-       
+        gManager = GameObject.Find("GameManager");
         SetTargetSize();
         centre = this.transform.position;
-        
+        StartCoroutine(Teleport());
     }
 
     void SetTargetSize()
@@ -41,28 +45,33 @@ public int strafeDistance = 3;
         float size = sizes[enumAsInt];
         this.transform.localScale = Vector3.one * size;
 
-        /*
+        
         switch (targetSize)
         {
             case TargetSize.Small:
-                size = 0.5f;
-                speed = 2f;
+                coloredObject.GetComponent<Renderer>().material.color = Color.red;
                 break;
             case TargetSize.Medium:
-                size = 1f;
-                speed = 1f;
+                coloredObject.GetComponent<Renderer>().material.color = Color.yellow;
                 break;
             case TargetSize.Large:
-                size = 2f;
-                speed = 0.5f;
+                coloredObject.GetComponent<Renderer>().material.color = Color.green;
                 break;
         }
-        */
+        
 
         
     }
 
-    
+    IEnumerator Teleport()
+    {
+        yield return new WaitForSeconds(3);
+
+        float height = Random.Range(1.5f, 3.5f);
+        this.transform.position = new Vector3(this.transform.position.x, height, this.transform.position.z);
+
+        StartCoroutine(Teleport());
+    }
 
     // Update is called once per frame
     void Update()
@@ -96,6 +105,7 @@ public int strafeDistance = 3;
             {
                 
                 Destroy(this.gameObject);
+                gManager.GetComponent<GameManager>().AddTime();
             }
             
         }

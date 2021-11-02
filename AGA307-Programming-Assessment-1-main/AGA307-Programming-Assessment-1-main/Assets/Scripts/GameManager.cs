@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum GameState
 {
@@ -24,6 +25,9 @@ public class GameManager : Singleton<GameManager>
     
 
     public int score = 0;
+    public int time = 30;
+
+    public Text timeText;
 
 
 
@@ -36,6 +40,7 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         state = GameState.Start;
+        StartCoroutine(CountDown());
     }
 
     // Update is called once per frame
@@ -48,4 +53,20 @@ public class GameManager : Singleton<GameManager>
 	{
         score = score + points;
 	}
+
+    public void AddTime()
+    {
+        time = time + 5;
+        timeText.text = ("Time: " + time);
+    }
+
+    IEnumerator CountDown()
+    {
+        yield return new WaitForSeconds(1);
+
+        time = time - 1;
+        timeText.text = ("Time: " + time);
+
+        StartCoroutine(CountDown());
+    }
 }

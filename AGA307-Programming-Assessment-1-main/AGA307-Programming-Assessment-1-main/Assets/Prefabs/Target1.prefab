@@ -48,8 +48,13 @@ MonoBehaviour:
   targetSize: 0
   health: 3
   size: 0
-  speed: 1
+  sizes:
+  - 0.5
+  - 1
+  - 2
+  speeds: 010000000200000003000000
   strafeDistance: 3
+  coloredObject: {fileID: 4983867303256873176}
 --- !u!136 &8937776126824250463
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -121,6 +126,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21a98dfe0d0921f4284fb2d6d8caefd9, type: 3}
+--- !u!1 &4983867303256873176 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6601711584461954018, guid: 21a98dfe0d0921f4284fb2d6d8caefd9, type: 3}
+  m_PrefabInstance: {fileID: 2213445951004132154}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4423778786225026670 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2581642321312953684, guid: 21a98dfe0d0921f4284fb2d6d8caefd9, type: 3}
