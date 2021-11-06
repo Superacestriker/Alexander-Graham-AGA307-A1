@@ -14,12 +14,13 @@ public class TargetManager : Singleton<TargetManager>
     public GameObject[] targetPrefabs;
     public Transform[] spawnPoints;
     public TargetSize targetSize;
-
+    public GameObject uiMan;
 
     // Start is called before the first frame update
     void Start()
     {
         SetUp();
+
     }
 
     void SetUp()
@@ -33,8 +34,11 @@ public class TargetManager : Singleton<TargetManager>
     void Update()
     {
 		if (Input.GetKeyDown(KeyCode.I))
+        {
             SpawnTarget();
-		
+            uiMan.GetComponent<UiManager>().TargetNumberChange(1);
+        }
+            
     }
 
     void SpawnTarget()

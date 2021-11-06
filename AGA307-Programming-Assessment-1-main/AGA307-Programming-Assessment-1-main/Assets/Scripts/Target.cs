@@ -8,7 +8,7 @@ public class Target : MonoBehaviour
     public int health = 3;
     public float size;
     public GameObject gManager;
-    
+    public GameObject uiMan;
 
 
     public float[] sizes = new float[]
@@ -34,9 +34,27 @@ public int strafeDistance = 3;
     void Start()
     {
         gManager = GameObject.Find("GameManager");
+        uiMan = GameObject.Find("Ui Manager");
         SetTargetSize();
         centre = this.transform.position;
         StartCoroutine(Teleport());
+        
+
+        switch (gManager.GetComponent<GameManager>().difficulty)
+        {
+            case Difficulty.Easy:
+                targetSize = TargetSize.Large;
+                SetTargetSize();
+                break;
+            case Difficulty.Medium:
+                targetSize = TargetSize.Medium;
+                SetTargetSize();
+                break;
+            case Difficulty.Hard:
+                targetSize = TargetSize.Small;
+                SetTargetSize();
+                break;
+        }
     }
 
     void SetTargetSize()
@@ -84,6 +102,26 @@ public int strafeDistance = 3;
             targetSize = (TargetSize) (int)Random.Range(0,3);
             SetTargetSize();
 		}
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            targetSize = TargetSize.Large;
+            SetTargetSize();
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            targetSize = TargetSize.Medium;
+            SetTargetSize();
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            targetSize = TargetSize.Small;
+            SetTargetSize();
+        }
     }
 
     void Move()
@@ -103,9 +141,13 @@ public int strafeDistance = 3;
             health = health - 1;
             if(health <= 0)
             {
-                
+                int enumAsInt = (int)targetSize;
+                float size = sizes[enumAsInt];
+                float pointValue = 20f / size;
+                uiMan.GetComponent<UiManager>().TargetNumberChange(-1);
                 Destroy(this.gameObject);
-                gManager.GetComponent<GameManager>().AddTime();
+                gManager.GetComponent<GameManager>().AddTime(5);
+                gManager.GetComponent<GameManager>().AddScore((int) pointValue);
             }
             
         }
