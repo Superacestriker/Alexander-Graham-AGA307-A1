@@ -142,7 +142,10 @@ PrefabInstance:
       propertyPath: m_text
       value: 'Use WASD to move
 
-        press space to jump'
+        press space to jump
+
+        press left click
+        to shoot'
       objectReference: {fileID: 0}
     - target: {fileID: 2675621409480733450, guid: a66f6fdf516e6544cb210a1b4387a10f, type: 3}
       propertyPath: m_Pivot.x
@@ -230,7 +233,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4215978006735688401, guid: a66f6fdf516e6544cb210a1b4387a10f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 300
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 4215978006735688401, guid: a66f6fdf516e6544cb210a1b4387a10f, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2300,8 +2303,18 @@ PrefabInstance:
       propertyPath: m_text
       value: 'press 1-3 to change weapons and difficulty
 
-        press left click
-        to shoot'
+        (or press M to
+        change difficulty)
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851602409596092137, guid: a66f6fdf516e6544cb210a1b4387a10f, type: 3}
+      propertyPath: m_fontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851602409596092137, guid: a66f6fdf516e6544cb210a1b4387a10f, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2675621409480733450, guid: a66f6fdf516e6544cb210a1b4387a10f, type: 3}
       propertyPath: m_Pivot.x

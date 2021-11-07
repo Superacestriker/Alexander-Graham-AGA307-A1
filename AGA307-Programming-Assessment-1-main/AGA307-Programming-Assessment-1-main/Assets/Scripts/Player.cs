@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
     public Gun[] guns;
     public int currentGun = 0;
     public Text weaponName;
+    public GameObject regularMenu;
+    public GameObject difficultyMenu;
 
     void Start()
     {
@@ -47,8 +49,16 @@ public class Player : MonoBehaviour
         Move();
         Look();
 
-		
-        for(int i = 0; i < 9; i++)
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            regularMenu.gameObject.SetActive(false);
+            difficultyMenu.gameObject.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            GetComponent <Player> ().enabled = false;
+        }
+
+        for (int i = 0; i < 9; i++)
 		{
             // turn i into a string
             string key = (i + 1).ToString();

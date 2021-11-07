@@ -15,6 +15,11 @@ public class UiManager : Singleton<UiManager>
     public Text ScoreText;
     public Text coolScoreText;
     public GameObject coolScoreContainer;
+    public Dropdown difficultyMenu;
+
+    public GameObject regularMenu;
+    public GameObject difficultyMenuParent;
+    public GameObject player;
 
     public int targetsLeft = 5;
 
@@ -71,6 +76,28 @@ public class UiManager : Singleton<UiManager>
         gManager.GetComponent<GameManager>().score = 0;
         ScoreText.text = ("Score: " + gManager.GetComponent<GameManager>().score);
         coolScoreContainer.gameObject.SetActive(false);
+    }
+
+    public void MenuDifficultyChange()
+    {
+        if(difficultyMenu.value == 0)
+        {
+            gManager.GetComponent<GameManager>().difficulty = Difficulty.Easy;
+        }
+        if (difficultyMenu.value == 1)
+        {
+            gManager.GetComponent<GameManager>().difficulty = Difficulty.Medium;
+        }
+        if (difficultyMenu.value == 2)
+        {
+            gManager.GetComponent<GameManager>().difficulty = Difficulty.Hard;
+        }
+        DifficultyChange();
+        regularMenu.gameObject.SetActive(true);
+        difficultyMenuParent.gameObject.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        player.GetComponent<Player>().enabled = true;
     }
 
     

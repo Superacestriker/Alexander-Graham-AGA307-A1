@@ -30,7 +30,8 @@ public class GameManager : Singleton<GameManager>
 
     public Text timeText;
     public GameObject uiMan;
-    
+    public Dropdown difficultyMenu;
+
 
 
 
@@ -52,6 +53,7 @@ public class GameManager : Singleton<GameManager>
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             difficulty = Difficulty.Easy;
+            difficultyMenu.value = 0;
             uiMan.GetComponent<UiManager>().DifficultyChange();
         }
 
@@ -59,6 +61,7 @@ public class GameManager : Singleton<GameManager>
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             difficulty = Difficulty.Medium;
+            difficultyMenu.value = 1;
             uiMan.GetComponent<UiManager>().DifficultyChange();
         }
 
@@ -66,6 +69,7 @@ public class GameManager : Singleton<GameManager>
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             difficulty = Difficulty.Hard;
+            difficultyMenu.value = 2;
             uiMan.GetComponent<UiManager>().DifficultyChange();
         }
     }

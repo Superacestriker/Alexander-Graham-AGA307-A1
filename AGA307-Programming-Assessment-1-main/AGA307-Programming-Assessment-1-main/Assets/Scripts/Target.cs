@@ -94,6 +94,22 @@ public int strafeDistance = 3;
     // Update is called once per frame
     void Update()
     {
+        // this is a bad idea but it will solve the dropdown problem
+        switch (gManager.GetComponent<GameManager>().difficulty)
+        {
+            case Difficulty.Easy:
+                targetSize = TargetSize.Large;
+                SetTargetSize();
+                break;
+            case Difficulty.Medium:
+                targetSize = TargetSize.Medium;
+                SetTargetSize();
+                break;
+            case Difficulty.Hard:
+                targetSize = TargetSize.Small;
+                SetTargetSize();
+                break;
+        }
         Move();
 
 		if (Input.GetKeyDown(KeyCode.R))
@@ -103,25 +119,7 @@ public int strafeDistance = 3;
             SetTargetSize();
 		}
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            targetSize = TargetSize.Large;
-            SetTargetSize();
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            targetSize = TargetSize.Medium;
-            SetTargetSize();
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            targetSize = TargetSize.Small;
-            SetTargetSize();
-        }
+       
     }
 
     void Move()
